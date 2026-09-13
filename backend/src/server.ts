@@ -51,10 +51,15 @@ app.get("/health", async (_req, reply) => {
   }
 });
 
-await app.register(projectRoutes);
-await app.register(telemetryRoutes);
-await app.register(adminRoutes);
-
+/**
+ * Must be registered BEFORE the route plugins.
+ *
+ * `register()` creates an encapsulated child context that inherits the error handler as it
+ * exists at registration time. Setting this afterwards leaves every route on Fastify's default
+ * handler, which serialises the raw error — so a failed query answered callers with the
+ * Postgres error code and table name ("relation \"projects\" does not exist"). Ordering is the
+ * whole fix; the handler itself was always correct.
+ */
 app.setErrorHandler((error: FastifyError, req, reply) => {
   req.log.error({ err: error }, "unhandled error");
   const status = error.statusCode ?? 500;
@@ -64,6 +69,10 @@ app.setErrorHandler((error: FastifyError, req, reply) => {
     message: status === 500 ? "Something went wrong" : error.message,
   });
 });
+
+await app.register(projectRoutes);
+await app.register(telemetryRoutes);
+await app.register(adminRoutes);
 
 /**
  * Scheduled work. Only runs in production so a local dev server doesn't spend GitHub rate limit
