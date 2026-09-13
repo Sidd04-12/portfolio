@@ -1,0 +1,1 @@
+{"root":["./src/main.tsx","./src/components/servicecard.tsx","./src/components/servicedrawer.tsx","./src/components/sparkline.tsx","./src/components/topbar.tsx","./src/components/trafficpanel.tsx","./src/lib/api.ts","./src/lib/telemetry.ts","./src/pages/admin.tsx","./src/pages/dashboard.tsx"],"version":"5.9.3"}
