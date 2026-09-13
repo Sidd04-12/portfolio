@@ -145,14 +145,24 @@ export function Dashboard() {
                   <span className="k">Email</span>
                   <span>sidddelta@gmail.com</span>
                 </a>
-                <a href="https://github.com/Sidd04-12" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com/Sidd04-12"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent("link_click", undefined, "github")}
+                >
                   <span className="k">GitHub</span>
                   <span>Sidd04-12</span>
                 </a>
-                <div className="todo">
+                <a
+                  href="https://www.linkedin.com/in/siddp0402/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent("link_click", undefined, "linkedin")}
+                >
                   <span className="k">LinkedIn</span>
-                  <span>awaiting handle</span>
-                </div>
+                  <span>siddp0402</span>
+                </a>
               </div>
             </div>
           </div>
