@@ -13,6 +13,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "tsx src/db/migrate.ts",
     "db:seed": "tsx src/db/seed.ts",
+    "db:reset-admin": "tsx src/db/reset-admin.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
